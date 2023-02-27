@@ -26,7 +26,7 @@ app = Client(
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
     plugins=plugins,
-    workers=300,
+    workers=420,
 )
 
 app.run()
