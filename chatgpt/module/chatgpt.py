@@ -18,7 +18,7 @@ from pyrogram.errors import MessageNotModified
 from chatgpt.module.what import *
 from config import OPENAI_API 
 
-@ren.on_message(filters.command("ask") & filters.private | filters.group)
+@ren.on_message(filters.command("gpt") & filters.private | filters.group)
 async def chatgpt(c: Client, m: Message):
     randydev = (
         m.text.split(None, 1)[1]
@@ -37,7 +37,7 @@ async def chatgpt(c: Client, m: Message):
     }
 
     json_data = {
-        "prompt": randydev,
+        "prompt": crazyyash,
         "model": "text-davinci-003",
         "temperature": 0.5,
         "max_tokens": 1024,
@@ -47,11 +47,11 @@ async def chatgpt(c: Client, m: Message):
         "top_p": 0.3,
         "frequency_penalty": 0.5,
     }
-    ran = await m.reply("Wait a moment looking for your answer..", quote=True)
+    ran = await m.reply("ʟᴏᴏᴋɪɴɢ ғᴏʀ ʀᴇsᴜʟᴛs/ɴ ⭐ᴡʜɪʟᴇ ᴡᴀɪᴛɪɴɢ ᴇᴀᴛ ғɪᴠᴇ sᴛᴀʀ ᴀɴᴅ ᴅᴏ ɴᴏᴛʜɪɴɢ...", quote=True)
     try:
         response = (await http.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
         await ran.edit(response["choices"][0]["text"])
     except MessageNotModified:
         pass
     except Exception:
-        await ran.edit("Yahh, sorry i can't get your answer.")
+        await ran.edit("ʏᴇᴀʜ, ɴᴏ ʀᴇsᴜʟᴛs ғᴏᴜɴᴅ")
