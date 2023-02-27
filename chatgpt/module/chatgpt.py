@@ -47,7 +47,7 @@ async def chatgpt(c: Client, m: Message):
         "top_p": 0.3,
         "frequency_penalty": 0.5,
     }
-    ran = await m.reply("ʟᴏᴏᴋɪɴɢ ғᴏʀ ʀᴇsᴜʟᴛs/ɴ ⭐ᴡʜɪʟᴇ ᴡᴀɪᴛɪɴɢ ᴇᴀᴛ ғɪᴠᴇ sᴛᴀʀ ᴀɴᴅ ᴅᴏ ɴᴏᴛʜɪɴɢ...", quote=True)
+    ran = await m.reply("ʟᴏᴏᴋɪɴɢ ғᴏʀ ʀᴇsᴜʟᴛs/n ⭐ᴡʜɪʟᴇ ᴡᴀɪᴛɪɴɢ ᴇᴀᴛ ғɪᴠᴇ sᴛᴀʀ ᴀɴᴅ ᴅᴏ ɴᴏᴛʜɪɴɢ...", quote=True)
     try:
         response = (await http.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
         await ran.edit(response["choices"][0]["text"])
